@@ -1,0 +1,115 @@
+/* apt-guests3-proto: «Что оценили гости» — максимум 3 пункта, компактно; подписи остаются.
+   Мобилка — строки без разделителей; десктоп — 3 колонки в один ряд. */
+#hl.hl-1 .title { margin-block-end: 12px; }
+#hl.hl-1 ul { gap: 12px; }
+#hl.hl-1 li, #hl.hl-1 li:last-child { padding: 0; border-bottom: 0; }
+@media (min-width: 681px) {
+  #hl .hx { padding-inline-end: 20px; }  /* правое поле 44 не нужно: колонкам нужна ширина */
+  #hl.hl-1 ul { grid-template-columns: repeat(3, 1fr); column-gap: 24px; }
+  #hl.hl-1 li { gap: 10px; }
+}
+#hl .ds { text-wrap: balance; }  /* подписи в 2 строки — ровными строками, без висячих «9,6 из 10» */
+
+/* ================= Варианты блока: html[data-hv="a…e"] (переключатель — index.html) =================
+   a — колонки, иконка слева (база выше); b — серые плитки; c — иконки в тёплых кружках;
+   d — колонки с вертикальными разделителями, иконка сверху; e — пункты в тёплой плашке */
+
+/* b. Плитки: каждый пункт — серая плитка r12; на десктопе иконка над текстом */
+html[data-hv="b"] #hl.hl-1 ul { gap: 8px; }
+html[data-hv="b"] #hl.hl-1 li, html[data-hv="b"] #hl.hl-1 li:last-child { padding: 12px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+@media (min-width: 681px) {
+  html[data-hv="b"] #hl.hl-1 ul { column-gap: 12px; }
+  html[data-hv="b"] #hl.hl-1 li, html[data-hv="b"] #hl.hl-1 li:last-child { flex-direction: column; gap: 8px; padding: 16px; }
+  html[data-hv="b"] #hl.hl-f .circ { margin-top: 0; }
+}
+
+/* c. Тёплые кружки: иконка 22 цвета звёздочек (темнее для контраста) в кружке 40 — связка с ✨ в заголовке */
+html[data-hv="c"] #hl.hl-f .circ { width: 40px; height: 40px; margin-top: 0; border-radius: 50%; background: #FCF1DC; }
+html[data-hv="c"] #hl.hl-f .circ svg.ic { width: 22px; height: 22px; color: #B7790F; }
+html[data-hv="c"] #hl.hl-f .hx-txt { padding-top: 9px; }  /* первая строка 22 — по центру кружка 40 */
+html[data-hv="c"] #hl.hl-f .ds { margin-top: 0; }
+@media (min-width: 681px) { html[data-hv="c"] #hl.hl-1 li { gap: 12px; } }
+
+/* d. Разделители: мобилка — строки с линиями между ними; десктоп — 3 колонки, вертикальные линии, иконка сверху */
+html[data-hv="d"] #hl.hl-1 ul { gap: 0; }
+html[data-hv="d"] #hl.hl-1 li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+html[data-hv="d"] #hl.hl-1 li:first-child { padding-top: 4px; }
+html[data-hv="d"] #hl.hl-1 li:last-child { padding-bottom: 0; border-bottom: 0; }
+@media (min-width: 681px) {
+  html[data-hv="d"] #hl.hl-1 .title { margin-block-end: 16px; }
+  /* колонки равной ширины: зазор 40, линия — посередине зазора (псевдоэлемент) */
+  html[data-hv="d"] #hl.hl-1 ul { column-gap: 40px; }
+  html[data-hv="d"] #hl.hl-1 li, html[data-hv="d"] #hl.hl-1 li:first-child, html[data-hv="d"] #hl.hl-1 li:last-child {
+    position: relative; flex-direction: column; gap: 8px; padding: 0; border-bottom: 0; }
+  html[data-hv="d"] #hl.hl-1 li + li::before { content: ""; position: absolute; top: 0; bottom: 0; left: -20px; border-left: 1px solid var(--line); }
+  html[data-hv="d"] #hl.hl-f .circ { margin-top: 0; }
+}
+
+/* e. Тёплая плашка: все три пункта на светло-тёплой подложке r12, внутри — как a */
+html[data-hv="e"] #hl.hl-1 ul { padding: 12px; border-radius: 12px; background: #FDF5E6; }
+html[data-hv="e"] #hl.hl-1 .ds { color: rgba(45, 49, 55, .64); }  /* серый прода на тёплом бледнеет */
+@media (min-width: 681px) { html[data-hv="e"] #hl.hl-1 ul { padding: 16px; column-gap: 20px; } }
+
+/* ================= Сколько пунктов: html[data-hn="3|2|1"] (переключатель — index.html) =================
+   лишние скрываются; на десктопе колонок столько же, сколько пунктов (на всю ширину карточки) */
+html[data-hn="2"] #hl.hl-1 li:nth-child(n+3), html[data-hn="1"] #hl.hl-1 li:nth-child(n+2) { display: none; }
+html[data-hn="2"] #hl.hl-1 li:nth-child(2), html[data-hn="1"] #hl.hl-1 li:nth-child(1) { padding-bottom: 0; border-bottom: 0; }  /* D: последний видимый — без линии */
+@media (min-width: 681px) {
+  html[data-hn="2"] #hl.hl-1 ul { grid-template-columns: repeat(2, 1fr); }
+  html[data-hn="1"] #hl.hl-1 ul { grid-template-columns: 1fr; }
+}
+
+/* ================= Спальные места в «Об апартаментах»: html[data-bn="1…5"] — виден один набор ================= */
+html[data-bn="1"] .vG-beds:not([data-bn="1"]),
+html[data-bn="2"] .vG-beds:not([data-bn="2"]),
+html[data-bn="3"] .vG-beds:not([data-bn="3"]),
+html[data-bn="4"] .vG-beds:not([data-bn="4"]),
+html[data-bn="5"] .vG-beds:not([data-bn="5"]) { display: none !important; }
+
+/* мобилка: у «Что оценили гости» без подъёма карточки — только блик и звёздочки */
+@media (max-width: 680px) { #hl .a7.play { animation: none; z-index: auto; } }
+
+/* заголовок блока — как «Услуги и удобства» на проде: мобилка 20/24, десктоп 24/30 */
+@media (max-width: 680px) {
+  #hl .title { font-size: 20px; line-height: 24px; }
+  #hl .sp, #hl .sp svg { width: 20px; height: 24px; }
+  #hl .sp { margin-left: 4px; }
+}
+
+/* «Что вокруг / Достопримечательности / Аэропорты / Метро» на мобилке: вместо синих плашек — строки списка с разделителями;
+   текст чёрный 16/22 500, иконка 24 как на проде, шеврон серый вниз (раскрывашка) */
+@media (max-width: 680px) {
+  body .Pois_root__fFE8G { margin-block-start: 12px; }
+  body .Pois_pois__1PO_m + .Pois_pois__1PO_m { border-block-start: 1px solid #e5e5e5; }
+  body .Pois_title__dGnze { margin: 0; padding: 14px 32px 14px 0; gap: 12px; border-radius: 0; background: none;
+    color: var(--palette-black, #2d3137); font-size: 16px; line-height: 22px; font-weight: 500; }
+  body .Pois_titleArrow__q_NZ1 { color: var(--palette-dark, #868686); transform: rotate(0); }
+  html[dir=ltr] body .Pois_titleArrow__q_NZ1 { right: 4px; }
+  body .Pois_titleArrow_opened__OtNE7 { transform: rotate(180deg); }
+}
+
+/* «Об апартаментах» на мобилке — как «Что оценили гости» и «Услуги и удобства»: 20/24 */
+@media (max-width: 680px) {
+  body .About_title__hbiou { font-size: 20px; line-height: 24px; }
+}
+
+/* отзыв: вместо фейда — обрезка с многоточием на 3 строках, как в «Об апартаментах» (spoiler.js) */
+body .Review_description__EIH6j.ok-clamp:not(.ok-open) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+body .Review_description__EIH6j.ok-clamp:not(.ok-open) > p { display: inline; }
+body .Review_description__EIH6j.ok-clamp:not(.ok-open) > p + p::before { content: ' '; }
+body .Review_description__EIH6j.ok-clamp:not(.ok-open) .ok-rv-more { display: none; }
+body .Review_spoiler__yTHKo .Spoiler_wrapper_fold__b5wQ0 { background: none; margin-block-start: 0; padding-block-start: 4px; }
+
+/* раскрытие списков «Что вокруг» и др. (мобилка): высота плавно 0 → авто, содержимое проявляется, стрелка поворачивается */
+@media (max-width: 680px) {
+  .ok-poi-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  .ok-poi-in { min-height: 0; overflow: hidden; opacity: 0; transition: opacity .3s ease; }
+  .ok-open > .ok-poi-body { grid-template-rows: 1fr; }
+  .ok-open > .ok-poi-body .ok-poi-in { opacity: 1; }
+  body .Pois_titleArrow__q_NZ1 { transition: transform .3s ease; }
+  /* список: под текстом заголовка (иконка 24 + 12), строка — название слева, расстояние справа */
+  body .Pois_list__XOxNi { margin: 0; padding: 0 0 16px 36px; }
+  body .Pois_list__XOxNi .Pois_item__DVGia { display: flex; justify-content: space-between; gap: 12px; padding-inline-start: 26px; font-size: 14px; line-height: 20px; }
+  html[dir=ltr] body .Pois_list__XOxNi .Pois_item__DVGia:before { top: 1px; }
+  body .Pois_list__XOxNi .Pois_distance__0icg_ { flex: none; margin: 0; }
+}

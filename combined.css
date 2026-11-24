@@ -1,0 +1,191 @@
+/* apt-combined-proto: «Вооооот это вас удивит» (вариант 1) + «Об апартаментах» (вариант G) на странице прода.
+   Токены и шкала — кита (--palette-*, ok-typography); карточка блока — как у соседней ApartmentPage_about. */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+
+/* ================= «Об апартаментах», вариант G — из apt-beds-proto/variants.css как есть ================= */
+:where(.About_about__0Wwvh) :where(p, ul, li, h4) { margin: 0; padding: 0; list-style: none; }
+.vG { margin-block-end: 16px; }
+.vG-beds { display: flex; flex-direction: column; gap: 4px; }
+.vG-beds li { display: flex; align-items: center; gap: 8px; }
+.vG-beds svg { flex: 0 0 20px; inline-size: 20px; block-size: 20px; }
+.vG-sep { display: none !important; }
+.vG-params { margin-block-start: 8px !important; }
+@media (min-width: 681px) {
+  .vG { margin-block-end: 12px; }
+  .vG-beds { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: 12px; }
+  .vG-sep { display: block !important; }
+  .vG-params { margin-block-start: 4px !important; }
+}
+
+/* ================= «Вооооот это вас удивит», вариант 1 «Список с пояснениями» ================= */
+/* --- из исходного блока (бот виза/page-19164.html, #hl .v2.a6.a7): звёздочки, блик + обводка (.a6), подъём (.a7) --- */
+#hl { --card: var(--palette-white, #fff); --text: var(--palette-black, #2D3137); --fill: var(--palette-ulight, #F4F4F4); --line: #ECEDF0;
+      color: var(--text); font-family: inherit; }
+#hl *, #hl *::before, #hl *::after { box-sizing: border-box; }
+#hl svg.ic { width: 20px; height: 20px; flex: none; color: var(--text); opacity: 1; display: block; } /* тёмные, как иконки кроватей в «Об апартаментах» */
+#hl .sp { display: inline-flex; width: 24px; height: 28px; color: #EEAE3C; vertical-align: top; margin-left: 6px; }
+#hl .sp svg { width: 24px; height: 28px; overflow: visible; }
+#hl .sp svg path, #hl .sp svg circle { transform-box: fill-box; transform-origin: center; }
+@keyframes twinkle-static { 0%,100% { transform: scale(1); opacity: 1 } 50% { transform: scale(.55); opacity: .35 } }
+#hl .a6 { position: relative; cursor: pointer; overflow: hidden; isolation: isolate; }
+#hl .a6::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 360px; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg,rgba(238,174,60,0) 0%,rgba(238,174,60,.74) 39.6%,#EEAE3C 52.1%,rgba(238,174,60,.85) 64.6%,rgba(238,174,60,.59) 75.6%,rgba(238,174,60,0) 100%);
+  mix-blend-mode: lighten; transform: translateX(-380px); }
+#hl .a6::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; padding: 1.33px; opacity: 0;
+  background: linear-gradient(90deg,rgba(238,174,60,0) 0%,rgba(238,174,60,.74) 39.6%,#EEAE3C 52.1%,rgba(238,174,60,.85) 64.6%,rgba(238,174,60,0) 100%) no-repeat;
+  background-size: 480px 100%; background-position: -480px 0;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+#hl .a6.play::after { animation: a6-sweep 2200ms cubic-bezier(.55,-.1,.35,1.1) 1 both; }
+#hl .a6.play::before { animation: a6-stroke 2200ms cubic-bezier(.55,-.1,.35,1.1) 1 both; }
+#hl .a6.play .sp svg path, #hl .a6.play .sp svg circle { animation: twinkle-static 1100ms ease-in-out 2; }
+#hl .a6.play .sp svg :nth-child(2) { animation-delay: 80ms; }
+#hl .a6.play .sp svg :nth-child(3) { animation-delay: 160ms; }
+#hl .a6.play .sp svg :nth-child(4) { animation-delay: 240ms; }
+#hl .a6.play .sp svg :nth-child(5) { animation-delay: 320ms; }
+@keyframes a6-sweep { 0% { opacity: 1; transform: translateX(-380px) } 100% { opacity: 1; transform: translateX(760px) } }
+@keyframes a6-stroke { 0% { opacity: 1; background-position: -480px 0 } 100% { opacity: 1; background-position: 760px 0 } }
+#hl .a7 { transform-origin: 50% 50%; will-change: transform; }
+#hl .a7.play { z-index: 5; animation: a7-lift 2200ms cubic-bezier(.55,-.1,.35,1.1) 1 both; }
+@keyframes a7-lift {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(20,24,30,0) }
+  35%,65% { transform: scale(1.07); box-shadow: 0 30px 60px -20px rgba(20,24,30,.35), 0 8px 20px -8px rgba(20,24,30,.12) }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(20,24,30,0) }
+}
+@media (prefers-reduced-motion: reduce) { #hl *, #hl *::before, #hl *::after { animation: none !important; } }
+
+/* --- общая карточка: как ApartmentPage_about (мобилка r16, поля 12; десктоп поля 20/44/20/20 → контент 661) --- */
+#hl .hx { position: relative; background: var(--card); border-radius: var(--new-card-border-radius, 16px); padding: 12px; }
+/* заголовок — как About_title прода (24/30 bold), «звёздочки» держатся за последнее слово */
+#hl .title { margin: 0 0 12px; font-size: 24px; line-height: 30px; font-weight: 700; color: var(--text); }
+#hl .nw { white-space: nowrap; }
+#hl ul { list-style: none; margin: 0; padding: 0; }
+#hl p { margin: 0; }
+/* заголовок пункта = акцентная строка G (t-l-medium 16/22), подпись = серая строка G (t-m 14/20, --palette-dark) */
+#hl .tt { display: block; font-size: 16px; line-height: 22px; font-weight: 500; color: var(--text); }
+#hl .ds { display: block; margin-top: 2px; font-size: 14px; line-height: 20px; font-weight: 480; color: var(--palette-dark, #868686); }
+@media (min-width: 681px) {
+  /* в левой колонке десктопа прод поднимает «Об апартаментах» через order:-1 — ставим блок в ту же группу,
+     по DOM он стоит прямо перед ним */
+  .ApartmentPage_highlights { order: -1; }
+  #hl .hx { padding: 20px 44px 20px 20px; }
+}
+
+/* ================= 1. Список с пояснениями (текущий) ================= */
+#hl.hl-1 .title { margin-bottom: 4px; }
+#hl.hl-1 ul { display: grid; grid-template-columns: 1fr; }
+/* пункт: кружок 36 + текст; первая строка заголовка 16/22 по центру кружка → отступ (36−22)/2 = 7px,
+   поэтому заголовки стоят ровно, есть пояснение или нет */
+#hl.hl-1 li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+#hl.hl-1 li:last-child { border-bottom-color: transparent; padding-bottom: 0; }
+#hl.hl-1 .circ { width: 36px; height: 36px; border-radius: 50%; background: var(--fill); display: grid; place-items: center; flex: none; }
+#hl.hl-1 .hx-txt { min-width: 0; padding-top: 7px; }
+@media (min-width: 681px) {
+  #hl.hl-1 ul { grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  /* ячейка тянется на высоту ряда → разделители в ряду на одной линии; у нижнего ряда разделителя и нижнего поля нет */
+  #hl.hl-1 li:nth-last-child(2):nth-child(odd) { border-bottom-color: transparent; padding-bottom: 0; }
+}
+
+/* ================= A. Тонированные плитки ================= */
+/* тон по смыслу, приглушённо: подложка плитки — светлый тон, иконка — тоном в белой плашке */
+#hl [data-tone="loc"]   { --t-bg: #EEF3FB; --t-ink: #3D6AB3; }  /* локация — голубой */
+#hl [data-tone="clean"] { --t-bg: #EAF5F3; --t-ink: #2C8577; }  /* чистота — бирюзовый */
+#hl [data-tone="lock"]  { --t-bg: #F1EFF9; --t-ink: #6656AE; }  /* бесконтактное — сиреневый */
+#hl [data-tone="beds"]  { --t-bg: #F7F1E7; --t-ink: #94703A; }  /* спальные места — песочный */
+#hl [data-tone="kids"]  { --t-bg: #FBEFEA; --t-ink: #B65F42; }  /* дети — тёплый персиковый */
+#hl [data-tone="area"]  { --t-bg: #EEF4EA; --t-ink: #567F42; }  /* площадь — шалфей */
+#hl .ta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+/* плитки ряда одной высоты (stretch), содержимое прижато к верху */
+#hl .ta-i { display: flex; flex-direction: column; align-items: flex-start; padding: 12px; border-radius: 12px; background: var(--t-bg); min-width: 0; }
+#hl .ta-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--palette-white, #fff); color: var(--t-ink); margin-bottom: 12px; }
+#hl .ta-ic svg.ic { width: 26px; height: 26px; color: currentColor; opacity: 1; }
+/* на тонированной подложке серый прода бледнеет — подпись темнее, но тем же тоном текста */
+#hl .ta .ds { color: rgba(45, 49, 55, .68); }
+@media (min-width: 681px) {
+  #hl .ta { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  #hl .ta-i { padding: 16px; }
+}
+
+/* ================= B. Горизонтальная лента карточек ================= */
+#hl .hb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+#hl .hb-head .title { margin: 0; }
+#hl .hb-nav { display: none; flex: none; }
+/* лента до краёв карточки, снап по карточке; на мобилке виден край следующей */
+#hl .hb-row { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  margin: 0 -12px; padding: 0 12px; scroll-padding: 0 12px; }
+#hl .hb-row::-webkit-scrollbar { display: none; }
+#hl .hb-c { flex: 0 0 212px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: flex-start;
+  padding: 16px; border-radius: var(--new-card-border-radius, 16px); background: var(--fill); }
+#hl .hb-ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--palette-white, #fff); margin-bottom: 16px; }
+#hl .hb-ic svg.ic { width: 28px; height: 28px; }
+@media (min-width: 681px) {
+  #hl .hb-nav { display: flex; }
+  #hl .hb-row { gap: 12px; margin: 0 -44px 0 -20px; padding: 0 44px 0 20px; scroll-padding: 0 20px; }
+  #hl .hb-c { flex-basis: 200px; }
+}
+
+/* ================= C. Главный козырь + остальное ================= */
+/* первая особенность — тёплая (золотая) плашка */
+#hl .hc-hero { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border-radius: var(--new-card-border-radius, 16px);
+  background: #FCF1DC; margin-bottom: 4px; }
+#hl .hc-ic { display: grid; place-items: center; flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--palette-white, #fff); color: #C08514; }
+#hl .hc-ic svg.ic { width: 32px; height: 32px; color: currentColor; opacity: 1; }
+#hl .hc-txt { min-width: 0; padding-top: 4px; }
+#hl .hc-t { display: block; font-size: 20px; line-height: 24px; font-weight: 700; color: var(--text); }
+#hl .hc-hero .ds { margin-top: 4px; font-size: 16px; line-height: 22px; color: rgba(45, 49, 55, .72); }
+/* остальные — компактные строки: иконка 20 без кружка, подпись второй строкой */
+#hl .hc-list { display: grid; grid-template-columns: 1fr; }
+#hl .hc-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+#hl .hc-list li:last-child { border-bottom-color: transparent; padding-bottom: 0; }
+#hl .hc-list svg.ic { margin-top: 1px; }  /* по центру первой строки 22 */
+#hl .hc-row { min-width: 0; }
+@media (min-width: 681px) {
+  #hl .hc-hero { padding: 16px 20px; margin-bottom: 8px; }
+  #hl .hc-list { grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  /* 5 пунктов: нижний ряд — только левая ячейка; у неё и у последнего разделителя нет */
+  #hl .hc-list li:nth-last-child(2):nth-child(odd) { border-bottom-color: transparent; padding-bottom: 0; }
+}
+
+/* ================= D. Компактный чек-лист ================= */
+#hl.hl-d .title { margin-bottom: 8px; }
+#hl .hd-list { display: grid; grid-template-columns: 1fr; row-gap: 10px; }
+#hl .hd-list li { display: flex; align-items: flex-start; gap: 10px; }
+/* золотая искра по центру первой строки 22 */
+#hl .hd-ck { flex: none; width: 18px; height: 18px; margin-top: 2px; color: #EEAE3C; transform-box: fill-box; transform-origin: center; }
+/* «Заголовок — подпись» одной фразой; если не помещается, продолжение переносится под заголовок (отступ — под текст) */
+#hl .hd-list p { min-width: 0; font-size: 16px; line-height: 22px; }
+#hl .hd-list .tt { display: inline; }
+#hl .hd-list .ds { display: inline; margin: 0; font-size: 16px; line-height: 22px; }
+/* анимация под форму: при прогоне искры мерцают по очереди, как «звёздочки» заголовка */
+#hl .a6.play .hd-ck { animation: twinkle-static 1100ms ease-in-out 2; animation-delay: calc(var(--i) * 90ms); }
+@media (min-width: 681px) {
+  #hl .hd-list { grid-template-columns: 1fr 1fr; column-gap: 24px; row-gap: 12px; }
+}
+
+/* ================= E–H: вариации варианта 1 (база — правила #hl.hl-1 выше) ================= */
+/* E. Без разделителей, больше воздуха: ритм отступами */
+#hl.hl-e ul { row-gap: 20px; margin-top: 12px; }
+#hl.hl-e li { padding: 0; border-bottom: 0; }
+@media (min-width: 681px) { #hl.hl-e ul { row-gap: 24px; } }
+
+/* F. Иконки 24 без кружков: иконка по центру первой строки 22 (−1px), текст без отступа сверху */
+#hl.hl-f li { gap: 12px; }
+#hl.hl-f .circ { width: 24px; height: 24px; margin-top: -1px; background: none; border-radius: 0; }
+#hl.hl-f .circ svg.ic { width: 24px; height: 24px; opacity: 1; }
+#hl.hl-f .hx-txt { padding-top: 0; }
+
+/* G. Золотые кружки: тонировка от золота заголовка, иконка тёмно-золотая */
+#hl.hl-g .circ { background: rgba(238, 174, 60, .14); }
+#hl.hl-g .circ svg.ic { color: #9A6A12; opacity: 1; }
+
+/* H. Подпись в строку через тире: продолжение переносится под заголовок (отступ — под текст) */
+#hl.hl-h .tt, #hl.hl-h .ds { display: inline; }
+#hl.hl-h .ds { margin: 0; font-size: 16px; line-height: 22px; }
+
+/* название квартиры в описании — без курсива (на проде <em>) */
+.About_descriptionParagraph__u6Wls em{font-style:normal}
+
+/* юр. сноска — отдельная белая карточка под отзывами, ширина как у блока отзывов */
+.ok-legal-card{background:#fff;border-radius:16px;padding:20px}
+.ok-legal-text{margin:0;font-size:14px;line-height:20px;font-weight:480;color:var(--palette-dark,#868686)}
+@media (max-width:680px){.ok-legal-card{padding:16px 20px}}

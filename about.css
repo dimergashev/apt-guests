@@ -1,0 +1,153 @@
+/* «Об апартаментах»: 4 варианта выделения кроватей и параметров. Переключаются атрибутом html[data-ab="1…4"]
+   (оболочка index.html, кнопки 1–4). Разметка одна — блок .vG варианта G: .vG-beds (кровати) + .vG-params (серая строка).
+   Цвета — токены кита: --palette-ulight #f4f4f4, --palette-light #e5e5e5, --palette-dark #868686. */
+
+/* описание до разворота — на строку короче (прод: 4 строки) */
+body .About_descriptionWrapper__1kb5E:not(.About_descriptionWrapper_isExpanded___Ssbt) { -webkit-line-clamp: 3; line-clamp: 3; } /* прод: body … { clamp 4 } */
+
+.vG-params { margin: 0; }
+
+/* ---------- 1. Серая плашка: кровати и параметры в одном сером блоке ---------- */
+html[data-ab="1"] .vG { padding: 12px 16px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+
+/* ---------- 2. Плашка с разделителем: кровати крупнее (18/22 bold, иконки 24), под линией — параметры ---------- */
+html[data-ab="2"] .vG { padding: 12px 16px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+html[data-ab="2"] .vG-beds { font-size: 18px; line-height: 22px; font-weight: 700; }
+html[data-ab="2"] .vG-beds svg { flex-basis: 24px; inline-size: 24px; block-size: 24px; }
+html[data-ab="2"] .vG-params { margin-block-start: 10px !important; padding-block-start: 10px; border-top: 1px solid var(--palette-light, #e5e5e5); }
+
+/* ---------- 3. Плашка только у кроватей, параметры — серой строкой под ней ---------- */
+html[data-ab="3"] .vG-beds { padding: 12px 16px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+html[data-ab="3"] .vG-params { margin-block-start: 8px !important; }
+
+/* ---------- 4. Контурная карточка: иконки кроватей в серых кружках, под линией — параметры ---------- */
+html[data-ab="4"] .vG { padding: 12px 16px; border-radius: 12px; border: 1px solid var(--palette-light, #e5e5e5); }
+html[data-ab="4"] .vG-beds { gap: 8px; }
+html[data-ab="4"] .vG-beds li:not(.vG-sep) { gap: 8px; }
+html[data-ab="4"] .vG-beds svg { flex: 0 0 24px; inline-size: 24px; block-size: 24px; } /* без подложки */
+html[data-ab="4"] .vG-params { margin-block-start: 12px !important; padding-block-start: 12px; border-top: 1px solid var(--palette-light, #e5e5e5); }
+
+@media (min-width: 681px) {
+  html[data-ab="2"] .vG-beds { column-gap: 16px; }
+  html[data-ab="4"] .vG-beds { column-gap: 16px; }
+}
+
+/* ================= 5–8: параметры НЕ приглушены (чёрный текст); кровати заметнее за счёт иконок в кружках и medium ================= */
+html[data-ab="5"] .vG, html[data-ab="6"] .vG { padding: 12px 16px; border-radius: 12px; border: 1px solid var(--palette-light, #e5e5e5); }
+html[data-ab="7"] .vG, html[data-ab="8"] .vG { padding: 12px 16px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+/* иконки кроватей 24px, без подложки */
+html[data-ab="5"] .vG-beds svg, html[data-ab="6"] .vG-beds svg,
+html[data-ab="7"] .vG-beds svg, html[data-ab="8"] .vG-beds svg { flex: 0 0 24px; inline-size: 24px; block-size: 24px; }
+html[data-ab="5"] .vG-beds, html[data-ab="6"] .vG-beds, html[data-ab="7"] .vG-beds, html[data-ab="8"] .vG-beds { gap: 8px; }
+html[data-ab="5"] .vG-beds li:not(.vG-sep), html[data-ab="6"] .vG-beds li:not(.vG-sep),
+html[data-ab="7"] .vG-beds li:not(.vG-sep), html[data-ab="8"] .vG-beds li:not(.vG-sep) { gap: 8px; }
+/* параметры чёрным */
+html[data-ab="5"] .vG-params, html[data-ab="6"] .vG-params, html[data-ab="7"] .vG-params, html[data-ab="8"] .vG-params { color: var(--palette-black, #2d3137); }
+
+/* 5. Контур, чёрным: параметры 16/22 regular под линией */
+html[data-ab="5"] .vG-params { margin-block-start: 12px !important; padding-block-start: 12px; border-top: 1px solid var(--palette-light, #e5e5e5); font-size: 16px; line-height: 22px; }
+html[data-ab="5"] .vG-dot { color: var(--palette-dark, #868686); }
+
+/* 6. Контур, чипы: параметры — серые чипы как Tag прода (#f4f4f4, r8, 14/20 480, 4/8) */
+html[data-ab="6"] .vG-params, html[data-ab="8"] .vG-params { display: flex; flex-wrap: wrap; gap: 8px; margin-block-start: 12px !important; }
+html[data-ab="6"] .vG-dot, html[data-ab="8"] .vG-dot { display: none; }
+html[data-ab="6"] .vG-p, html[data-ab="8"] .vG-p { padding: 4px 8px; border-radius: 8px; background: var(--palette-ulight, #f4f4f4); }
+
+/* 7. Плашка, чёрным: без линии, параметры 16/22 regular */
+html[data-ab="7"] .vG-params { margin-block-start: 10px !important; font-size: 16px; line-height: 22px; }
+html[data-ab="7"] .vG-dot { color: var(--palette-dark, #868686); }
+
+/* 8. Плашка, чипы: белые чипы на сером */
+html[data-ab="8"] .vG-p { background: var(--palette-white, #fff); }
+
+@media (min-width: 681px) {
+  html[data-ab="5"] .vG-beds, html[data-ab="6"] .vG-beds, html[data-ab="7"] .vG-beds, html[data-ab="8"] .vG-beds { column-gap: 16px; }
+}
+
+/* ================= 9–14: своя разметка (about_variants.py → блок .abx после .vG). Кровати чуть заметнее параметров,
+   параметры чёрным; иконки параметров — Tag прода (prod.css), кровати — те же SVG, что в .vG ================= */
+.abv { display: none; }
+html:is([data-ab="9"], [data-ab="10"], [data-ab="11"], [data-ab="12"], [data-ab="13"], [data-ab="14"]) .vG { display: none; }
+html[data-ab="9"] .ab9, html[data-ab="10"] .ab10, html[data-ab="11"] .ab11,
+html[data-ab="12"] .ab12, html[data-ab="13"] .ab13, html[data-ab="14"] .ab14 { display: block; margin-block-end: 16px; }
+.abx ul, .abx li, .abx dl, .abx dt, .abx dd, .abx h4, .abx p { margin: 0; padding: 0; list-style: none; }
+.abx li { display: flex; align-items: center; }
+.abx-bi { flex: 0 0 24px; inline-size: 24px; block-size: 24px; color: var(--palette-black, #2d3137); }
+.abx-ti { flex: 0 0 20px; }
+
+/* ---------- 9. Плитки ---------- */
+.ab9-beds { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ab9-beds li { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+.ab9-beds .abx-bi { flex-basis: 32px; inline-size: 32px; block-size: 32px; }
+.ab9-params { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-block-start: 8px !important; }
+.ab9-params li { gap: 8px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--palette-light, #e5e5e5); }
+.ab9-params li:last-child { grid-column: 1 / -1; }
+
+/* ---------- 10. Две колонки ---------- */
+.ab10 { display: none; }
+html[data-ab="10"] .ab10 { display: grid; gap: 8px; }
+.ab10-col { padding: 12px 16px 16px; border-radius: 12px; background: var(--palette-ulight, #f4f4f4); }
+.ab10-col h4 { margin-block-end: 8px !important; }
+.ab10-col ul { display: flex; flex-direction: column; gap: 8px; }
+.ab10-beds li { gap: 8px; }
+.ab10-params li { gap: 8px; }
+
+/* ---------- 11. Таблица ---------- */
+.ab11-beds { display: flex; flex-direction: column; gap: 8px; margin-block-end: 8px !important; }
+.ab11-beds li { gap: 8px; }
+.ab11-row { display: flex; justify-content: space-between; gap: 16px; padding-block: 8px; border-top: 1px solid var(--palette-light, #e5e5e5); }
+.ab11-row:last-child { border-bottom: 1px solid var(--palette-light, #e5e5e5); }
+.ab11-row dd { text-align: end; }
+
+/* ---------- 12. Где спать ---------- */
+.ab12 h4 { margin-block-end: 8px !important; }
+.ab12-beds { display: flex; flex-direction: column; gap: 8px; }
+.ab12-beds li { gap: 12px; }
+.ab12-beds .abx-bi { flex-basis: 32px; inline-size: 32px; block-size: 32px; }
+.ab12-params { margin-block-start: 12px !important; }
+.ab12-dot { color: var(--palette-dark, #868686); }
+
+/* ---------- 13. Теги с иконками ---------- */
+.ab13-beds, .ab13-params { display: flex; flex-wrap: wrap; gap: 8px; }
+.ab13-beds li { gap: 8px; padding: 6px 12px 6px 8px; border-radius: 8px; background: var(--palette-sec, #e3ebfd); }
+.ab13-params { margin-block-start: 8px !important; }
+.ab13-params li { gap: 6px; padding: 5px 12px 5px 8px; border-radius: 8px; background: var(--palette-ulight, #f4f4f4); }
+
+/* ---------- 14. Без плашки ---------- */
+html[data-ab="14"] .ab14 { padding-block-end: 16px; border-bottom: 1px solid var(--palette-light, #e5e5e5); }
+.ab14-beds { display: flex; flex-direction: column; gap: 8px; }
+.ab14-beds li { gap: 8px; }
+.ab14-params { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-block-start: 12px !important; }
+.ab14-params li { gap: 8px; }
+.ab14-params li:last-child { grid-column: 1 / -1; }
+
+@media (min-width: 681px) {
+  html[data-ab="9"] .ab9, html[data-ab="10"] .ab10, html[data-ab="11"] .ab11,
+  html[data-ab="12"] .ab12, html[data-ab="13"] .ab13, html[data-ab="14"] .ab14 { margin-block-end: 12px; }
+  /* 9: кровати двумя плитками, параметры — 5 плиток в ряд с иконкой сверху */
+  .ab9-beds li { flex-direction: row; align-items: center; gap: 12px; padding: 16px; }
+  .ab9-params { grid-template-columns: repeat(5, 1fr); }
+  .ab9-params li { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 12px; }
+  .ab9-params li:last-child { grid-column: auto; }
+  .ab9-params .abx-ti { inline-size: 24px; block-size: 24px; flex-basis: 24px; }
+  /* 10: две колонки */
+  html[data-ab="10"] .ab10 { grid-template-columns: 1fr 1fr; }
+  .ab10-params ul { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 8px 24px; }
+  .ab10-params li:last-child { grid-column: 1 / -1; }
+  /* 11: кровати в строку, таблица в 2 колонки */
+  .ab11-beds { flex-direction: row; gap: 24px; margin-block-end: 12px !important; }
+  .ab11-kv { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
+  .ab11-row:last-child { border-bottom: 0; }
+  .ab11-kv { border-bottom: 1px solid var(--palette-light, #e5e5e5); }
+  .ab11-row dd { text-align: start; }
+  .ab11-row dt { flex: 0 0 120px; }
+  .ab11-row { justify-content: flex-start; }
+  /* 12: кровати в строку */
+  .ab12-beds { flex-direction: row; gap: 32px; }
+  /* 14: кровати в строку, параметры в 3 колонки */
+  .ab14-beds { flex-direction: row; gap: 32px; }
+  .ab14-params { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+}
+
+/* десктоп: у карточки прода справа поле 44 (под длину строки текста) — плашка/контур идут на всю ширину, до поля 20 */
+@media (min-width: 681px) { body .About_about__0Wwvh .vG { margin-inline-end: -24px; } }

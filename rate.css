@@ -1,0 +1,48 @@
+/* apt-guests3-proto — тариф на мобилке: компонент сайдбара прода в странице + нижняя плашка + шторка (rate.js) */
+
+/* в «Доступных вариантах»: белая карточка на сером фоне блока, как SidebarContainer_container прода */
+.ok-mrate .AggregatedRatesView_wrapper__iEW_L { padding: 16px; border-radius: 16px; background: var(--palette-white, #fff); }
+.ok-mrate .Booking_button__F2IAA, .ok-rsheet .Booking_button__F2IAA { inline-size: 100%; margin: 0; }
+
+/* шторка — SwipeablePopup прода (как «Все удобства»): фон до 0.7 и выезд снизу, оба transition 0.5s (стили ставит rate.js) */
+.ok-rsheet[hidden] { display: none; }
+.ok-rsheet .SwipeablePopup_background__LC28a { opacity: 0; }
+.ok-rsheet .SwipeablePopup_wrapper__3cvKt { transform: translateY(100%); }
+.ok-rsheet-head { position: relative; padding: 0 56px 0 16px; margin-block-end: 16px; }
+.ok-rsheet-title { margin: 0; }
+.ok-rsheet-body { padding: 0 16px calc(20px + env(safe-area-inset-bottom)); }
+.ok-rsheet-body .AggregatedRatesView_wrapper__iEW_L { gap: 16px; }
+html .ok-rsheet .BottomSheet_closeButton__4BQhi { top: -7px; right: 8px; border: 0; background: none; color: var(--palette-black, #2d3137); cursor: pointer; }
+.ok-rsheet .BottomSheet_closeButtonIcon__0Tio8 { width: 22px; height: 22px; }
+
+/* нижняя плашка: цена слева (+ зачёркнутая), под ней выбранные условия — ссылка на шторку; кнопка справа */
+@media (max-width: 680px) {
+  body .Price_price__hO08h.ok-sb { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--palette-white, #fff); }
+}
+.ok-sb-l { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ok-sb-price { display: flex; align-items: baseline; gap: 6px; padding: 0; border: 0; background: none; font: inherit; color: inherit; white-space: nowrap; cursor: pointer; }
+.ok-sb-nights { margin: 0; font-size: 12px; line-height: 16px; color: var(--palette-dark, #868686); white-space: nowrap; }
+.ok-sb-amount { font-size: 18px; line-height: 22px; font-weight: 700; color: var(--palette-black, #2d3137); }
+.ok-sb-strike { font-size: 12px; line-height: 16px; color: var(--palette-dark, #868686); }
+.ok-sb-cond { display: inline-flex; align-items: center; gap: 5px; padding: 0; border: 0; background: none; font: inherit; font-size: 14px; line-height: 20px;
+  font-weight: 500; color: var(--link); white-space: nowrap; text-align: start; cursor: pointer; }  /* как «Развернуть описание» прода */
+.ok-sb-chev { width: 7px; height: 16px; flex: none; transform: translateY(1px); }  /* центр галочки — по строчным буквам */
+.ok-sb-btn { flex: none; }
+/* на десктопе плашки нет (тариф в сайдбаре) */
+@media (min-width: 681px) { .ok-sb, .ok-rsheet { display: none !important; } }
+
+/* в странице: скидка — в шторке «Детали цены»; вместо большой кнопки — ссылка (кнопка у плашки) */
+.ok-mrate .Price_wrapper__g38PL > .Price_row__kLfme:has(.Price_discountTitle___oywl) { display: none; }
+.ok-price-details { display: inline-flex; align-items: center; gap: 2px; align-self: flex-start; padding: 0; border: 0; background: none; font: inherit;
+  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--link); cursor: pointer; }
+.ok-price-details svg { width: 14px; height: 14px; }
+/* последняя прокрутка не уходит под плашку */
+@media (max-width: 680px) { body:has(.ok-sb) { padding-bottom: 88px; } }
+
+
+/* плашка: «даты · оплата» серым одной строкой, под ней «Изменить ›» — ссылка на шторку, относится к обоим */
+.ok-sb .ok-sb-cond { position: relative; }
+.ok-sb .ok-sb-cond::after { content: ''; position: absolute; inset: -8px -8px -10px; }  /* зона нажатия больше текста */
+/* шторка: двойное поле дат из сайдбара десктопа — над «Отменой» */
+.ok-rs-dates { margin-block-end: 12px; }

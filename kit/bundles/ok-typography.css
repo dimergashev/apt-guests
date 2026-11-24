@@ -1,0 +1,62 @@
+/* Островок-кит: шкала типографики ostrovok.ru — мобильный прод (360px) и десктоп (1280px).
+   Сгенерировано scripts/gen-foundations.py из capture/2026-11-22/{prod,desktop}/typo.json — не править руками.
+   В комментарии: где стиль встречается (общий / мобильный / десктоп) и частоты моб/деск.
+   Вес 480 — как на проде (в prod.css 170 правил font-weight:480; при статичных
+   @font-face 300/400/500/700 браузер рисует его начертанием 500). */
+.ok-t-h-xl{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:24px;line-height:30px;font-weight:700;letter-spacing:0}  /* Заголовок XL, общий, моб 51 / деск 58 */
+.ok-t-h-l-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:20px;line-height:16px;font-weight:700;letter-spacing:0}  /* Заголовок L 16 (десктоп), десктоп, моб 0 / деск 10 */
+.ok-t-h-l{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:20px;line-height:24px;font-weight:700;letter-spacing:0}  /* Заголовок L, общий, моб 93 / деск 96 */
+.ok-t-h-m{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:18px;line-height:22px;font-weight:700;letter-spacing:0}  /* Заголовок M, общий, моб 99 / деск 69 */
+.ok-t-h-s-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:16px;font-weight:700;letter-spacing:0}  /* Заголовок S 16 (десктоп), десктоп, моб 0 / деск 21 */
+.ok-t-h-s-19{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:19px;font-weight:700;letter-spacing:0}  /* Заголовок S 19 (десктоп), десктоп, моб 0 / деск 10 */
+.ok-t-h-s-tight{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;font-weight:700;letter-spacing:0}  /* Заголовок S сжатый, общий, моб 5 / деск 10 */
+.ok-t-h-s{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;font-weight:700;letter-spacing:0}  /* Заголовок S, общий, моб 28 / деск 102 */
+.ok-t-t-l-medium-18{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:18px;font-weight:500;letter-spacing:0}  /* Текст L Medium 18 (десктоп), десктоп, моб 0 / деск 10 */
+.ok-t-button{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;font-weight:500;letter-spacing:0}  /* Кнопка, общий, моб 50 / деск 89 */
+.ok-t-t-l-medium{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;font-weight:500;letter-spacing:0}  /* Текст L Medium, общий, моб 131 / деск 9 */
+.ok-t-t-l-20{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;font-weight:480;letter-spacing:0}  /* Текст L 20 (десктоп), десктоп, моб 4 / деск 5 */
+.ok-t-t-l{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:16px;line-height:22px;font-weight:480;letter-spacing:0}  /* Текст L, общий, моб 181 / деск 26 */
+.ok-t-t-m-bold-tight{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;font-weight:700;letter-spacing:0}  /* Текст M Bold сжатый (десктоп), десктоп, моб 0 / деск 11 */
+.ok-t-t-m-bold{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;font-weight:700;letter-spacing:0}  /* Текст M Bold (десктоп), десктоп, моб 0 / деск 23 */
+.ok-t-t-m-medium-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:16px;font-weight:500;letter-spacing:0}  /* Текст M Medium 16 (десктоп), десктоп, моб 0 / деск 5 */
+.ok-t-t-m-medium-17{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:17px;font-weight:500;letter-spacing:0}  /* Текст M Medium 17, общий, моб 5 / деск 5 */
+.ok-t-t-m-medium-tight{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;font-weight:500;letter-spacing:0}  /* Текст M Medium сжатый, мобильный, моб 9 / деск 0 */
+.ok-t-t-m-medium{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;font-weight:500;letter-spacing:0}  /* Текст M Medium, общий, моб 61 / деск 199 */
+.ok-t-t-m-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:16px;font-weight:480;letter-spacing:0}  /* Текст M 16 (десктоп), десктоп, моб 0 / деск 20 */
+.ok-t-t-m-tight{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;font-weight:480;letter-spacing:0}  /* Текст M сжатый, общий, моб 25 / деск 173 */
+.ok-t-t-m{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;font-weight:480;letter-spacing:0}  /* Текст M, общий, моб 142 / деск 424 */
+.ok-t-t-m-regular-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:14px;line-height:16px;font-weight:400;letter-spacing:0}  /* Текст M Regular 16, общий, моб 12 / деск 12 */
+.ok-t-t-s-regular{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:13px;line-height:16px;font-weight:400;letter-spacing:0}  /* Текст S Regular (десктоп), десктоп, моб 0 / деск 12 */
+.ok-t-caption-bold{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:700;letter-spacing:0}  /* Подпись Bold, общий, моб 41 / деск 41 */
+.ok-t-caption-medium-14{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:14px;font-weight:500;letter-spacing:0}  /* Подпись Medium 14, общий, моб 5 / деск 62 */
+.ok-t-caption-medium{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:16.5px;font-weight:500;letter-spacing:0}  /* Подпись Medium, общий, моб 15 / деск 15 */
+.ok-t-caption-medium-16{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:500;letter-spacing:0}  /* Подпись Medium 16 (десктоп), десктоп, моб 0 / деск 82 */
+.ok-t-caption-medium-17{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:17px;font-weight:500;letter-spacing:0}  /* Подпись Medium 17, общий, моб 5 / деск 5 */
+.ok-t-caption-medium-20{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:20px;font-weight:500;letter-spacing:0}  /* Подпись Medium 20 (десктоп), десктоп, моб 0 / деск 70 */
+.ok-t-caption-lower{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:480;letter-spacing:0;text-transform:lowercase}  /* Подпись строчная (десктоп), десктоп, моб 0 / деск 19 */
+.ok-t-caption{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:16px;font-weight:480;letter-spacing:0}  /* Подпись, общий, моб 81 / деск 166 */
+.ok-t-caption-regular-12{font-family:"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:12px;line-height:12px;font-weight:400;letter-spacing:0}  /* Подпись Regular 12, общий, моб 12 / деск 12 */
+.ok-t-spoof-hero{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:48px;line-height:52px;font-weight:500;letter-spacing:0}  /* Акцент Hero (Spoof, десктоп), десктоп, моб 0 / деск 1, редкий — заголовок страницы */
+.ok-t-spoof-xl-medium{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:36px;line-height:40px;font-weight:500;letter-spacing:0}  /* Акцент XL Medium (Spoof, десктоп), десктоп, моб 0 / деск 2, редкий — заголовок страницы */
+.ok-t-spoof-xl{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:36px;line-height:40px;font-weight:400;letter-spacing:0}  /* Акцент XL (Spoof, десктоп), десктоп, моб 0 / деск 6 */
+.ok-t-spoof-32{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:32px;line-height:32px;font-weight:500;letter-spacing:0}  /* Акцент 32 (Spoof, десктоп), десктоп, моб 0 / деск 3, редкий — заголовок страницы */
+.ok-t-spoof-l-medium{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:24px;line-height:28px;font-weight:500;letter-spacing:0}  /* Акцент L Medium (Spoof, десктоп), десктоп, моб 4 / деск 15 */
+.ok-t-spoof-l{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:24px;line-height:24px;font-weight:400;letter-spacing:0}  /* Акцент L (Spoof), мобильный, моб 6 / деск 0 */
+.ok-t-spoof-m{font-family:Spoof,"PT Root UI Web",Helvetica,Arial,sans-serif;font-size:20px;line-height:24px;font-weight:500;letter-spacing:0}  /* Акцент M (Spoof), общий, моб 18 / деск 7 */
+
+/* Цвета текста: через переменные темы прода (с фолбэком на значение 22.11.2026) */
+.ok-c-black{color:var(--palette-black,#2d3137)}
+.ok-c-dark{color:var(--palette-dark,#868686)}
+.ok-c-gray{color:var(--palette-gray,#c8c8c8)}
+.ok-c-disabled{color:var(--palette-disabled,#afafaf)}
+.ok-c-light{color:var(--palette-light,#e5e5e5)}
+.ok-c-white{color:var(--palette-white,#ffffff)}
+.ok-c-main{color:var(--palette-main,#0E41D2)}
+.ok-c-link{color:var(--link,#0E41D2)}
+.ok-c-alert{color:var(--alert,#ce2121)}
+.ok-c-success{color:var(--success,#53af24)}
+.ok-c-warning{color:var(--warning,#e77c00)}
+/* Встречаются в тексте прода, но токена в теме нет */
+.ok-c-price-green{color:#008900}
+.ok-c-deal-green{color:#3f9e10}
+.ok-c-white-50{color:rgba(255,255,255,0.5)}
