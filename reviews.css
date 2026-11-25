@@ -135,9 +135,9 @@
   .HotelReviews_hotelReviews__i3ZP_ .Pagination_pageButton__tuJ8u { font-size: 16px; line-height: 22px; }
 }
 
-/* юр. карточка под отзывами — та же ширина, что и отзывы (левая колонка), поля как у карточек колонки */
+/* юр. сноска под отзывами — без карточки, на сером фоне страницы; ширина колонки = ширина отзывов, текст по центру */
 @media (min-width: 681px) {
-  .ApartmentPage_sidebarWrapperLeftCol__UIXmj > .ok-legal-card { padding: 20px 44px 20px 20px; }
+  .ApartmentPage_sidebarWrapperLeftCol__UIXmj > .ok-legal-card { padding: 0 20px; }
 }
 
 /* ================= МОБИЛЬНАЯ: структура прода, подтянута только типографика ================= */

@@ -186,6 +186,6 @@ html::-webkit-scrollbar { display: none; }
 .About_descriptionParagraph__u6Wls em{font-style:normal}
 
 /* юр. сноска — отдельная белая карточка под отзывами, ширина как у блока отзывов */
-.ok-legal-card{background:#fff;border-radius:16px;padding:20px}
-.ok-legal-text{margin:0;font-size:14px;line-height:20px;font-weight:480;color:var(--palette-dark,#868686)}
-@media (max-width:680px){.ok-legal-card{padding:16px 20px}}
+.ok-legal-card{background:none;border-radius:0;padding:0 20px}
+.ok-legal-text{margin:0;font-size:14px;line-height:20px;font-weight:480;color:var(--palette-dark,#868686);text-align:center}
+@media (max-width:680px){.ok-legal-card{padding:4px 16px 8px}}
