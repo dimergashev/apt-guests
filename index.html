@@ -65,19 +65,11 @@
     F.d.style.height = h + 'px'; F.d.style.transform = 'scale(' + s + ')';
     W.d.style.width = Math.round(1440 * s) + 'px'; W.d.style.height = Math.round(h * s) + 'px';
   }
-  /* при открытии — к «Об апартаментах» и «Что понравилось гостям»; высоты над ним меняются после load (шрифты, фото),
-     поэтому догоняем несколько раз, пока пользователь сам не начал крутить */
-  function toBlock(f) {
-    var w = f.contentWindow, d = f.contentDocument, el = d && d.querySelector('.ApartmentPage_about__pRX_s');
-    if (!el) return;
-    var userScrolled = false;
-    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { w.addEventListener(ev, function () { userScrolled = true; }, { once: true }); });
-    [0, 300, 900, 1800].forEach(function (t) {
-      setTimeout(function () {
-        if (userScrolled) return;
-        w.scrollTo({ top: el.getBoundingClientRect().top + w.scrollY - (f === F.m ? 16 : 120), behavior: 'instant' });
-      }, t);
-    });
+  /* при открытии — всегда с верха страницы (без восстановления прокрутки после перезагрузки) */
+  function toTop(f) {
+    var w = f.contentWindow;
+    try { w.history.scrollRestoration = 'manual'; } catch (e) {}
+    w.scrollTo(0, 0);
   }
   function show() {
     btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.vp === vp)); });
@@ -86,7 +78,7 @@
     if (!started[vp]) {
       started[vp] = true;
       var f = F[vp];
-      f.addEventListener('load', function () { setAb(f); toBlock(f); }, { once: true });
+      f.addEventListener('load', function () { setAb(f); toTop(f); }, { once: true });
       f.src = SRC[vp];
     }
   }
