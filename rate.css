@@ -46,3 +46,18 @@ html .ok-rsheet .BottomSheet_closeButton__4BQhi { top: -7px; right: 8px; border:
 .ok-sb .ok-sb-cond::after { content: ''; position: absolute; inset: -8px -8px -10px; }  /* зона нажатия больше текста */
 /* шторка: двойное поле дат из сайдбара десктопа — над «Отменой» */
 .ok-rs-dates { margin-block-end: 12px; }
+
+/* плашка без шторки (apt-guests3-proto): цена — просто текст, не кнопка */
+p.ok-sb-price { margin: 0; cursor: default; }
+
+/* ---------- мобилка без шторки: нижняя плашка «Цены от … ₽» (как на проде) в белой панели ---------- */
+@media (max-width: 680px) {
+  body .Price_price__hO08h.ok-pb { flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--palette-white, #fff); }
+  body:has(.ok-pb) { padding-bottom: 82px; }
+}
+@media (min-width: 681px) { .ok-pb { display: none !important; } }
+.ok-pb-btn { min-width: 220px; padding-inline: 24px; }
+.ok-pb-note { margin: 0; font-size: 14px; line-height: 20px; color: var(--palette-dark, #868686); }
+/* выбор оплаты в карточке «Доступных вариантов» — та же строка таблицы тарифа, радио из сайдбара прода */
+.ok-pay-cell .RateOptionsSelection_optionsWrapper__q62ks { margin: 0; }

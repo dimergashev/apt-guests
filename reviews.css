@@ -25,7 +25,7 @@
   .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_title__dOtRJ { font-size: 24px; line-height: 30px; font-weight: 700; color: var(--palette-black); }
   .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_header__JgLYO > :not(.HotelReviews_title__dOtRJ) { display: none; }
 
-  /* ---------- сводка: оценка + шкалы в 2 колонки (как на мобилке) ---------- */
+  /* ---------- сводка: оценка + шкалы в 3 колонки (8 шкал — 3 строки вместо 4) ---------- */
   .HotelReviews_hotelReviews__i3ZP_ .Rating_rating__tVvPz { display: block; padding: 0 0 20px; margin: 0; border-bottom: 1px solid var(--border, #e5e5e5); }
   /* общая оценка — плоская зелёная плашка в размерах RatingBadge прода (54×48, r12, 24/30 bold) вместо флажка-ленты
      (на проде он свисает с верхнего края карточки; под заголовком «Отзывы» ему не за что держаться) */
@@ -40,7 +40,7 @@
   .HotelReviews_hotelReviews__i3ZP_ .Rating_description__eIGzB { font-size: 16px; line-height: 22px; font-weight: 700; }
   .HotelReviews_hotelReviews__i3ZP_ .Rating_reviews__jN525 { font-size: 14px; line-height: 20px; font-weight: 480; color: var(--palette-dark, #868686); }
   .HotelReviews_hotelReviews__i3ZP_ .Rating_detailedlist__6bb79 {
-    display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; row-gap: 12px; width: auto; margin: 20px 0 0; padding: 0; }
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; row-gap: 12px; width: auto; margin: 20px 0 0; padding: 0; }
   .HotelReviews_hotelReviews__i3ZP_ .Rating_detailedItem__3c3vZ { width: auto; margin: 0; padding: 0; }
   .HotelReviews_hotelReviews__i3ZP_ .Rating_detailedWrapper__D78k3 { margin-top: 6px; }
   .HotelReviews_hotelReviews__i3ZP_ .Rating_detailedValue__xXOSu { font-size: 14px; line-height: 20px; font-weight: 480; }
@@ -49,15 +49,15 @@
   .HotelReviews_hotelReviews__i3ZP_ .UgcGallery_UgcGallery__WKIFZ { padding: 20px 0 0; margin: 0; }
   .HotelReviews_hotelReviews__i3ZP_ .UgcGallery_UgcGallery__title__z0aBJ { margin: 0 0 12px; }
 
+  /* ---------- фото гостей и сортировка — одним рядом: фото слева, поле сортировки справа по низу фото
+     (раньше друг под другом, справа от них пустота). Карточка — flex с переносом, остальные дети на всю ширину ---------- */
+  .ApartmentPage_sidebarWrapperLeftCol__UIXmj > .HotelReviews_hotelReviews__i3ZP_ { flex-flow: row wrap; }
+  .HotelReviews_hotelReviews__i3ZP_ > *, .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_content__ieyas > * { flex: 0 0 100%; min-width: 0; }
+  .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_content__ieyas > div:has(.UgcGallery_UgcGallery__WKIFZ) { flex: 1 1 300px; }
+  .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_content__ieyas > .HotelReviews_select__F819D { flex: none; align-self: flex-end; margin-inline-start: auto; }
+
   /* ---------- сортировка: поле прода (InputBase) — чиним раскладку react-select из снимка ---------- */
   .HotelReviews_hotelReviews__i3ZP_ .HotelReviews_select__F819D { width: 260px; margin: 20px 0 0; }
-  .HotelReviews_hotelReviews__i3ZP_ .InputBase_field__MoNDY { position: relative; }
-  .HotelReviews_hotelReviews__i3ZP_ .css-17mbqk2-control { display: flex; align-items: center; justify-content: space-between; min-height: 0; border: 0; background: none; }
-  .HotelReviews_hotelReviews__i3ZP_ .css-tntsk8 { display: flex; align-items: center; min-width: 0; padding: 0; }
-  .HotelReviews_hotelReviews__i3ZP_ .css-62g3xt-dummyInput { position: absolute; opacity: 0; width: 1px; height: 1px; border: 0; padding: 0; }
-  .HotelReviews_hotelReviews__i3ZP_ .css-ztf0hc { display: flex; align-items: center; }
-  .HotelReviews_hotelReviews__i3ZP_ .css-43ykx9-indicatorSeparator { display: none; }
-  .HotelReviews_hotelReviews__i3ZP_ .SingleValue_label__h5u2R { font-size: 16px; line-height: 22px; }
 
   /* ---------- список: отзыв — вертикальная карточка, разделены линиями ---------- */
   .HotelReviews_hotelReviews__i3ZP_ .Reviews_reviews__H2KTq { width: auto; margin: 8px 0 0; padding: 0; }
@@ -175,3 +175,56 @@ body .Rating_totalRatingIcon__Qo52c .TotalRating_wrapper__2lzfr {
   border-radius: 10px; background: #25AC03; filter: none !important; }
 body .Rating_totalRatingIcon__Qo52c .TotalRating_icon__zlrzb { display: none; }
 body .Rating_totalRatingIcon__Qo52c .TotalRating_content__k5u6S { position: static; transform: none; font-size: 18px; line-height: 22px; font-weight: 700; color: #fff; }
+
+/* ================= сортировка отзывов (десктоп + шторка на мобилке) ================= */
+/* поле прода (InputBase) — чиним раскладку react-select из снимка */
+.HotelReviews_hotelReviews__i3ZP_ .InputBase_field__MoNDY { position: relative; }
+.HotelReviews_hotelReviews__i3ZP_ .css-17mbqk2-control { display: flex; align-items: center; justify-content: space-between; min-height: 0; border: 0; background: none; }
+.HotelReviews_hotelReviews__i3ZP_ .css-tntsk8 { display: flex; align-items: center; min-width: 0; padding: 0; }
+.HotelReviews_hotelReviews__i3ZP_ .css-62g3xt-dummyInput { position: absolute; opacity: 0; width: 1px; height: 1px; border: 0; padding: 0; }
+.HotelReviews_hotelReviews__i3ZP_ .css-ztf0hc { display: flex; align-items: center; }
+.HotelReviews_hotelReviews__i3ZP_ .css-43ykx9-indicatorSeparator { display: none; }
+.HotelReviews_hotelReviews__i3ZP_ .SingleValue_label__h5u2R { font-size: 16px; line-height: 22px; }
+.HotelReviews_hotelReviews__i3ZP_ .css-dyr6gj-container { position: relative; }
+.HotelReviews_hotelReviews__i3ZP_ .InputBase_fieldContainer__cXJMl { cursor: pointer; }
+.HotelReviews_hotelReviews__i3ZP_ .InputBase_fieldContainer__cXJMl.ok-sort-open { border-color: #868686; }  /* как у прода в открытом состоянии */
+.HotelReviews_hotelReviews__i3ZP_ .DropdownIndicatorCustom_container__4C7xv { display: block; transition: transform .2s ease; }
+/* меню — как css-…-menu прода: белое, r12, тень 0 2 12 rgba(45,49,55,.3), отступ 2, на ширину поля */
+.ok-sort-menu { position: absolute; z-index: 3; top: 100%; left: 0; right: 0; margin-top: 2px; border-radius: 12px; background: var(--palette-white, #fff);
+  box-shadow: 0 2px 12px 0 rgba(45, 49, 55, .3); color: var(--palette-black, #2d3137); animation: ok-sort-in .15s ease-out; }
+@keyframes ok-sort-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.ok-sort-menu .Option_option__TZR9o:active { background-color: var(--dropdown-selected-bg); }
+
+/* ================= мобилка: шторка отзывов (модалка прода HotelReviews_background) ================= */
+@media (max-width: 680px) {
+  .HotelReviews_background__WRr58 { transition: background-color .45s ease; }
+  .HotelReviews_background__WRr58 .HotelReviews_header__JgLYO,
+  .HotelReviews_background__WRr58 .HotelReviews_content__ieyas,
+  .HotelReviews_background__WRr58 .HotelReviews_footer__fHbdN { transition: transform .45s cubic-bezier(.32, .72, 0, 1); }
+  .HotelReviews_background__WRr58.ok-rv-off { background-color: rgba(45, 49, 55, 0); }
+  .HotelReviews_background__WRr58.ok-rv-off .HotelReviews_header__JgLYO,
+  .HotelReviews_background__WRr58.ok-rv-off .HotelReviews_content__ieyas { transform: translateY(100vh); }
+  .HotelReviews_background__WRr58.ok-rv-off .HotelReviews_footer__fHbdN { transform: translateY(100%); }
+  /* поле сортировки — на всю ширину шторки, «Раскрыть детали» в снимке без JS не работает */
+  .HotelReviews_background__WRr58 .HotelReviews_select__F819D { width: auto; }
+  .HotelReviews_hotelReviews__i3ZP_ .Review_detailesLink__UQAEU { display: none; }
+
+  /* оценки — прямоугольные плашки вместо флажков-лент (как на десктопе и в сниппете под галереей) */
+  .HotelReviews_hotelReviews__i3ZP_ .TotalRating_wrapper__2lzfr {
+    position: relative; display: flex; align-items: center; justify-content: center; width: auto; min-width: 38px; height: 30px; padding: 0 8px;
+    border-radius: 10px; background: #25AC03; filter: none !important; }
+  .HotelReviews_hotelReviews__i3ZP_ .TotalRating_icon__zlrzb { display: none; }
+  .HotelReviews_hotelReviews__i3ZP_ .TotalRating_content__k5u6S { position: static; transform: none; font-size: 18px; line-height: 22px; font-weight: 700; color: #fff; }
+  /* оценка отзыва в серой полосе — в строку с «Превосходно», по центру полосы (на проде флажок свисал с её верха) */
+  .HotelReviews_hotelReviews__i3ZP_ .Review_rating__3yQTh { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
+  .HotelReviews_hotelReviews__i3ZP_ .Review_totalRating__2_9m7 { position: static; flex: none; }
+  /* общая оценка в карточке — крупнее, как на десктопе (54×48, r12, 24/30), в поле карточки, «Превосходно» — вровень с её верхом */
+  .HotelReviews_hotelReviews__i3ZP_ .Rating_rating__tVvPz { padding-top: 16px; }
+  .HotelReviews_hotelReviews__i3ZP_ .Rating_total__CoRpm { min-height: 48px; padding-inline-start: 82px; }
+  html[dir] .HotelReviews_hotelReviews__i3ZP_ .Rating_totalRating__v3Kw1 { top: 0; left: 16px; }
+  .HotelReviews_hotelReviews__i3ZP_ .Rating_totalRating__v3Kw1 .TotalRating_wrapper__2lzfr { width: 54px; height: 48px; padding: 0; border-radius: 12px; }
+  .HotelReviews_hotelReviews__i3ZP_ .Rating_totalRating__v3Kw1 .TotalRating_content__k5u6S { font-size: 24px; line-height: 30px; }
+}
+
+/* «Фото гостей»: миниатюра заполняет плитку (у прода — object-fit: cover; в снимке правило не попало, у неквадратных фото пустота снизу) */
+.UgcGallery_UgcGallery__item__yaOoV picture, .UgcGallery_UgcGallery__item__yaOoV img { display: block; width: 100%; height: 100%; object-fit: cover; }

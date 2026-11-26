@@ -46,6 +46,11 @@
     <button type="button" data-bn="4" class="ok-t-t-m-medium">4</button>
     <button type="button" data-bn="5" class="ok-t-t-m-medium">5</button>
   </div>
+  <div class="vp" role="toolbar" aria-label="Фото гостей в отзывах">
+    <span class="vp-l ok-t-t-m">Фото гостей</span>
+    <button type="button" data-ph="1" class="ok-t-t-m-medium">1</button>
+    <button type="button" data-ph="24" class="ok-t-t-m-medium">24</button>
+  </div>
   </div>
   <div class="phone" id="phw"><iframe id="ph" title="Страница апартаментов, 360px"></iframe></div>
   <div class="desk" id="dkw" hidden><iframe id="dk" title="Страница апартаментов, 1440px"></iframe></div>
@@ -92,11 +97,11 @@
   });
   /* зашито при сборке: «Об апартаментах» — вариант 8, «Что понравилось гостям» — вариант D.
      Переключаются атрибуты html фреймов (guests.css): data-hn — пунктов в «Что понравилось гостям» (?hn=1…3),
-     data-bn — спальных мест в «Об апартаментах» (?bn=1…5) */
+     data-bn — спальных мест в «Об апартаментах» (?bn=1…5), data-ph — фото гостей в отзывах (?ph=1|24, reviews-ui.js) */
   var q = new URLSearchParams(location.search);
-  var st = { hn: /^[1-3]$/.test(q.get('hn')) ? q.get('hn') : '3', bn: /^[1-5]$/.test(q.get('bn')) ? q.get('bn') : '2' };
-  var sel = { hn: '.ApartmentPage_highlights', bn: '.ApartmentPage_about__pRX_s' };
-  function setAb(f) { var d = f.contentDocument; if (d && d.documentElement) { d.documentElement.setAttribute('data-hn', st.hn); d.documentElement.setAttribute('data-bn', st.bn); } }
+  var st = { hn: /^[1-3]$/.test(q.get('hn')) ? q.get('hn') : '3', bn: /^[1-5]$/.test(q.get('bn')) ? q.get('bn') : '2', ph: /^(1|24)$/.test(q.get('ph')) ? q.get('ph') : '1' };
+  var sel = { hn: '.ApartmentPage_highlights', bn: '.ApartmentPage_about__pRX_s', ph: '.HotelReviews_hotelReviews__i3ZP_' };
+  function setAb(f) { var d = f.contentDocument; if (d && d.documentElement) { d.documentElement.setAttribute('data-hn', st.hn); d.documentElement.setAttribute('data-bn', st.bn); d.documentElement.setAttribute('data-ph', st.ph); } }
   function mark(k) { document.querySelectorAll('[data-' + k + ']').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset[k] === st[k])); }); }
   function pick(k, v) {
     if (v === st[k]) return; st[k] = v;
@@ -105,7 +110,7 @@
     var f = F[vp], w = f.contentWindow, el = f.contentDocument && f.contentDocument.querySelector(sel[k]);  /* блок — в зону видимости */
     if (el) { var r = el.getBoundingClientRect(); if (r.top < 0 || r.bottom > w.innerHeight) w.scrollTo({ top: r.top + w.scrollY - (vp === 'm' ? 16 : 120), behavior: 'instant' }); }
   }
-  ['hn', 'bn'].forEach(function (k) {
+  ['hn', 'bn', 'ph'].forEach(function (k) {
     mark(k);
     document.querySelectorAll('[data-' + k + ']').forEach(function (b) { b.addEventListener('click', function () { pick(k, b.dataset[k]); }); });
   });
